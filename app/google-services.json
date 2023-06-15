@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "890115799113",
+    "project_id": "beautycenter-fb271",
+    "storage_bucket": "beautycenter-fb271.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890115799113:android:c185145c3d3cad958fe798",
+        "android_client_info": {
+          "package_name": "app.beautycenter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890115799113-37s9lbe6183piuht9v8h2a1immrlgd49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDktKt7BGNR-gX2GnX-wZHCDUUJJQIWJRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890115799113-37s9lbe6183piuht9v8h2a1immrlgd49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
