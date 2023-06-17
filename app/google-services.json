@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "890115799113",
+    "firebase_url": "https://beautycenter-fb271-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "beautycenter-fb271",
     "storage_bucket": "beautycenter-fb271.appspot.com"
   },
@@ -14,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "890115799113-37s9lbe6183piuht9v8h2a1immrlgd49.apps.googleusercontent.com",
+          "client_id": "890115799113-icu2c52tnh23turjlttkrq9gi8r7ii4r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

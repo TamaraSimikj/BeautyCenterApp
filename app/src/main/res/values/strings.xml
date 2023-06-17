@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">BeautyCenterApp</string>
 </resources>
-    <!--<?xml version="1.0" encoding="utf-8"?>-->
-    <!--<resources>-->
-    <!--    <string name="default_web_client_id" translatable="false">890115799113-37s9lbe6183piuht9v8h2a1immrlgd49.apps.googleusercontent.com</string>-->
-    <!--    <string name="gcm_defaultSenderId" translatable="false">890115799113</string>-->
-    <!--    <string name="google_api_key" translatable="false">AIzaSyDktKt7BGNR-gX2GnX-wZHCDUUJJQIWJRI</string>-->
-    <!--    <string name="google_app_id" translatable="false">1:890115799113:android:c185145c3d3cad958fe798</string>-->
-    <!--    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDktKt7BGNR-gX2GnX-wZHCDUUJJQIWJRI</string>-->
-    <!--    <string name="google_storage_bucket" translatable="false">beautycenter-fb271.appspot.com</string>-->
-    <!--    <string name="project_id" translatable="false">beautycenter-fb271</string>-->
-    <!--</resources>-->
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--    <resources>-->
+<!--        <string name="default_web_client_id" translatable="false">890115799113-37s9lbe6183piuht9v8h2a1immrlgd49.apps.googleusercontent.com</string>-->
+<!--        <string name="gcm_defaultSenderId" translatable="false">890115799113</string>-->
+<!--        <string name="google_api_key" translatable="false">AIzaSyDktKt7BGNR-gX2GnX-wZHCDUUJJQIWJRI</string>-->
+<!--        <string name="google_app_id" translatable="false">1:890115799113:android:c185145c3d3cad958fe798</string>-->
+<!--        <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDktKt7BGNR-gX2GnX-wZHCDUUJJQIWJRI</string>-->
+<!--        <string name="google_storage_bucket" translatable="false">beautycenter-fb271.appspot.com</string>-->
+<!--        <string name="project_id" translatable="false">beautycenter-fb271</string>-->
+<!--    </resources>-->

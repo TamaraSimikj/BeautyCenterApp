@@ -29,6 +29,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".AppointmentActivity" />
+        <activity android:name=".AppointmentListActivity" />
+
     </application>
 
 </manifest>
