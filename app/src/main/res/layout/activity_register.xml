@@ -3,23 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="30dp"
+    android:layout_marginTop="15dp">
 
-    <!-- Name Field -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registration form"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name" />
 
-    <!-- Surname Field -->
+
     <EditText
         android:id="@+id/etSurname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Surname" />
 
-    <!-- Phone Number Field -->
+
     <EditText
         android:id="@+id/etPhoneNumber"
         android:layout_width="match_parent"
@@ -27,7 +35,7 @@
         android:hint="Phone Number"
         android:inputType="phone" />
 
-    <!-- Email Field -->
+
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
@@ -35,7 +43,7 @@
         android:hint="Email"
         android:inputType="textEmailAddress" />
 
-    <!-- Password Field -->
+
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
@@ -43,18 +51,12 @@
         android:hint="Password"
         android:inputType="textPassword" />
 
-    <!-- Register Button -->
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/btn_pink"
+        android:layout_marginTop="32dp"
         android:text="Register" />
-
-    <!-- Google Sign-In Button -->
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/btnGoogleSignIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
 
 </LinearLayout>

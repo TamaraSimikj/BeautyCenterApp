@@ -31,49 +31,40 @@ class AppointmentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appointment)
 
-        // Initialize views
         tvUserName = findViewById(R.id.tvUserName)
         datePicker = findViewById(R.id.datePicker)
         spinnerTimeSlots = findViewById(R.id.spinnerTimeSlots)
         btnSubmit = findViewById(R.id.btnSubmit)
         spinnerServices = findViewById(R.id.spinnerServices)
 
-        // Initialize Firebase Authentication
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Initialize Firebase Realtime Database
         val database = FirebaseDatabase.getInstance()
         appointmentsRef = database.getReference("appointments")
 
-        // Set up the user name
         val user = firebaseAuth.currentUser
         val userName = user?.displayName
         tvUserName.text = "Welcome, $userName"
 
-        // Set up the DatePicker
         val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_MONTH, 1) // Set the minimum selectable date as tomorrow
+        calendar.add(Calendar.DAY_OF_MONTH, 1)
         datePicker.minDate = calendar.timeInMillis
 
-        // Set up the Time Slots Spinner
         val timeSlots = getTimeSlots()
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, timeSlots)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerTimeSlots.adapter = adapter
 
-        // Set up Services Spinner
         val services = getServices()
         val serviceNames = services.map { it.name }
         val adapterServices = ArrayAdapter(this,android.R.layout.simple_spinner_item,serviceNames )
         adapterServices.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerServices.adapter = adapterServices
 
-        // Set OnClickListener for the Submit button
         btnSubmit.setOnClickListener {
             val selectedDate = getSelectedDate()
             val selectedTimeSlot = spinnerTimeSlots.selectedItem.toString()
 
-            // Perform the appointment booking based on the selected date, time slot, and service
             val selectedService = spinnerServices.selectedItem.toString()
             bookAppointment(userName, selectedService, selectedDate, selectedTimeSlot)
         }
@@ -96,7 +87,7 @@ class AppointmentActivity : AppCompatActivity() {
 
     private fun getSelectedDate(): String {
         val day = datePicker.dayOfMonth
-        val month = datePicker.month + 1 // Months are zero-based, so add 1
+        val month = datePicker.month + 1
         val year = datePicker.year
 
         // Format the date as desired
@@ -121,28 +112,24 @@ class AppointmentActivity : AppCompatActivity() {
             appointmentsRef.child(appointmentKey).setValue(appointmentData)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        // Appointment saved successfully
                         Toast.makeText(this, "Appointment booked successfully", Toast.LENGTH_SHORT).show()
-
-                        // Redirect to the list of appointments for the current user
                         val intent = Intent(this, AppointmentListActivity::class.java)
                         startActivity(intent)
-                        finish() // Optional: Finish the current activity to prevent going back to it
+                        finish()
+
                     } else {
-                        // Failed to save the appointment
                         Toast.makeText(this, "Failed to book appointment", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
     }
-    // Dummy data for services
+
     private fun getServices(): List<Service> {
         return listOf(
             Service("Haircut", "Get a stylish haircut by professional stylists", 25.0),
             Service("Nails", "Pamper yourself with a manicure and pedicure", 20.0),
             Service("Makeup", "Transform your look with professional makeup", 30.0),
             Service("Waxing", "Experience smooth skin with our waxing services", 15.0)
-            // Add more services as needed
         )
     }
 }

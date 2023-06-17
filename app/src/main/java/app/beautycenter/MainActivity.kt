@@ -14,13 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize the register button
         btnRegister = findViewById(R.id.btnRegister)
         btnLogin = findViewById(R.id.btnLogin)
 
-        // Set OnClickListener for the register button
         btnRegister.setOnClickListener {
-            // Open the register form
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }

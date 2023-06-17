@@ -19,6 +19,7 @@
             android:id="@+id/btnMakeAppointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/btn_pink"
             android:text="Make Appointment" />
 
         <androidx.recyclerview.widget.RecyclerView
