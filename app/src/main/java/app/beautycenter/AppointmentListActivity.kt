@@ -1,10 +1,8 @@
 package app.beautycenter
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -26,14 +24,64 @@ class AppointmentListActivity : AppCompatActivity() {
 
         // Initialize Firebase Authentication
         firebaseAuth = FirebaseAuth.getInstance()
+        //navbar
+        val btnHome: Button = findViewById(R.id.btnHome)
+        val btnAppointments: Button = findViewById(R.id.btnAppointments)
+
+        btnHome.setOnClickListener {
+            // Handle home button click
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnAppointments.setOnClickListener {
+            val intent = Intent(this, AppointmentListActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Set up the dropdown menu
+        val btnDropdown: ImageButton = findViewById(R.id.btnDropdown)
+        val popupMenu = PopupMenu(this, btnDropdown)
+        popupMenu.menuInflater.inflate(R.menu.dropdown_menu, popupMenu.menu)
+
+        // Set the username in the dropdown menu
+        val user = firebaseAuth.currentUser
+        val userName = user?.displayName
+        popupMenu.menu.findItem(R.id.menu_username)?.title = userName
+
+        // Set click listener for the dropdown menu items
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.menu_username -> {
+                    // Handle username option
+                    Toast.makeText(this, "Current Logged user: $userName", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.menu_logout -> {
+                    // Handle logout option
+                    firebaseAuth.signOut()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Set click listener for the dropdown button
+        btnDropdown.setOnClickListener {
+            // Show the dropdown menu
+            popupMenu.show()
+        }
+        //end of navbar
+
+        tvUserName.text ="Appointments from,  "+ user?.displayName
 
         // Define the appointmentList as an empty ArrayList<String>
         val appointmentList = ArrayList<String>()
 
         val database = FirebaseDatabase.getInstance()
         val appointmentsRef = database.getReference("appointments")
-        val user = firebaseAuth.currentUser
-        val userName = user?.displayName
 
         appointmentsRef.orderByChild("username").equalTo(userName).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

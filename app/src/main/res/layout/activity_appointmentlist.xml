@@ -1,8 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include
+    layout="@layout/navigation_bar"
+    android:id="@+id/navigation_bar" />
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_below="@id/navigation_bar"
     android:padding="16dp"
     tools:context=".AppointmentListActivity">
 
@@ -23,3 +33,4 @@
         android:dividerHeight="1dp" />
 
 </LinearLayout>
+</RelativeLayout>

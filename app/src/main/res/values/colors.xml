@@ -10,6 +10,7 @@
 
     <color name="bg_color">#ebebeb</color>
     <color name="btn_pink">#f597ae</color>
+    <color name="navigation_bar_background">#C0C0C0</color>
 
 
 </resources>
