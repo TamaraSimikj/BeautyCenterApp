@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+  >
+
+    <TextView
+        android:id="@+id/Reminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="10dp"
+        tools:text = "Reminder for upcoming appointment" />
+
+    <TextView
+        android:id="@+id/tvAppointmentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        android:layout_below="@id/Reminder"
+        tools:text="Appointment Date: October 1, 2023" />
+
+    <TextView
+        android:id="@+id/tvAppointmentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        android:layout_below="@id/tvAppointmentDate"
+        tools:text="Time: 10:00 AM" />
+
+    <TextView
+        android:id="@+id/tvServiceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAppointmentTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        tools:text="Service: " />
+
+    <Button
+        android:id="@+id/btnRemindMeLater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvServiceName"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="24dp"
+        android:text="Remind Me Later" />
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvServiceName"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="24dp"
+        android:layout_toEndOf="@id/btnRemindMeLater"
+        android:text="Close" />
+
+</RelativeLayout>

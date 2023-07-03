@@ -9,12 +9,16 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import app.beautycenter.model.Service
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 class AppointmentActivity : AppCompatActivity() {
@@ -64,8 +68,8 @@ class AppointmentActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener {
             val selectedDate = getSelectedDate()
             val selectedTimeSlot = spinnerTimeSlots.selectedItem.toString()
-
             val selectedService = spinnerServices.selectedItem.toString()
+
             bookAppointment(userName, selectedService, selectedDate, selectedTimeSlot)
         }
     }
@@ -90,7 +94,6 @@ class AppointmentActivity : AppCompatActivity() {
         val month = datePicker.month + 1
         val year = datePicker.year
 
-        // Format the date as desired
         return "$day/$month/$year"
     }
 
@@ -114,6 +117,10 @@ class AppointmentActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Appointment booked successfully", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, AppointmentListActivity::class.java)
+
+                        val appointmentDate = "$date $timeSlot"
+                        scheduleNotification(appointmentDate,timeSlot,selectedService)
+
                         startActivity(intent)
                         finish()
 
@@ -122,6 +129,33 @@ class AppointmentActivity : AppCompatActivity() {
                     }
                 }
         }
+    }
+
+    private fun scheduleNotification(appointmentDate: String,time:String,service: String) {
+        val workManager = WorkManager.getInstance(applicationContext)
+
+        val inputData = Data.Builder()
+            .putString("appointment_date", appointmentDate)
+            .putString("time",time)
+            .putString("service",service)
+
+            .build()
+
+        val notificationWorkRequest = OneTimeWorkRequestBuilder<NotificationWorker>()
+            .setInputData(inputData)
+            .setInitialDelay(getDelayDuration(appointmentDate), TimeUnit.MILLISECONDS)
+            .build()
+
+        workManager.enqueue(notificationWorkRequest)
+    }
+
+    private fun getDelayDuration(appointmentDate: String): Long {
+        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault())
+        val appointmentDateTime = sdf.parse(appointmentDate)
+        val currentTime = Calendar.getInstance().time
+        val timeDifference = appointmentDateTime.time - currentTime.time
+        val oneDayInMillis = 24 * 60 * 60 * 1000// One day in milliseconds
+        return timeDifference - oneDayInMillis //86820000
     }
 
     private fun getServices(): List<Service> {

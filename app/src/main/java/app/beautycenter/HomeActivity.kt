@@ -2,6 +2,7 @@ package app.beautycenter
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -87,5 +88,11 @@ class HomeActivity : AppCompatActivity() {
             Service("Waxing", "Experience smooth skin with our waxing services", 15.0)
         )
     }
+
+    fun openMapActivity() {
+        val intent = Intent(this, MapActivity::class.java)
+        startActivity(intent)
+    }
+
 }
 
